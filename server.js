@@ -10,11 +10,22 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-//get city data from storage
+//get city data
 app.get('/api/v1/cities', (request, response) => {
   database('cities').select()
     .then((cities) => {
       response.status(200).json(cities);
+    })
+    .catch((error) => {
+      response.status(500).json({ error });
+    });
+});
+
+//get address pvd data
+app.get('/api/v1/addresses', (request, response) => {
+  database('addresses').select()
+    .then((addresses) => {
+      response.status(200).json(addresses);
     })
     .catch((error) => {
       response.status(500).json({ error });
