@@ -32,3 +32,22 @@ app.get('/api/v1/addresses', (request, response) => {
     });
 });
 
+//add a city to the cities database
+app.post('/api/v1/cities', (request, response) => {
+  const city = request.body;
+  //required params of city(string) and avg_pvw(num)
+  for (let requiredParameter of ['city', 'avg_pvw']) {
+    if (!city[requiredParameter]) {
+      return response
+        .status(422)
+        .send({ error: `Expected format: { city: <String>, avg_pvw: <Number> }. You're missing a "${requiredParameter}" property.` });
+    }
+  }
+  database('cities').insert(city, 'id')
+    .then(city => {
+      response.status(201).json({ id: city[0] })
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
+})
