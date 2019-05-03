@@ -9,7 +9,7 @@ app.set('port', process.env.PORT || 3000)
 app.use(express.json())
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen('port', () => console.log(`Example app listening on port 3000!`))
+app.listen(app.get('port'), () => console.log(`Example app listening on port ${app.get('port')}!`))
 
 //get city data
 app.get('/api/v1/cities', (request, response) => {
