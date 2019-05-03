@@ -4,7 +4,7 @@ const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 
 const app = express()
-// const port = 3000
+const port = 3000
 app.set('port', process.env.PORT || 3000)
 app.use(express.json())
 app.get('/', (req, res) => res.send('Hello World!'))
