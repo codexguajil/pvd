@@ -4,12 +4,12 @@ const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 
 const app = express()
-const port = 3000
+// const port = 3000
 app.set('port', process.env.PORT || 3000)
 app.use(express.json())
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen('port', () => console.log(`Example app listening on port ${port}!`))
 
 //get city data
 app.get('/api/v1/cities', (request, response) => {
