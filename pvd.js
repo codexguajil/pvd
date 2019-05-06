@@ -1,3 +1,4 @@
+//will remove addresses from cities object to be added separately
 let citiesData = [{
   city: 'Fort Worth',
   avg_pvw: 109,
